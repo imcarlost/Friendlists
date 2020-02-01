@@ -18,19 +18,11 @@ android:
     - platform-tools
     - build-tools-29.0.3
     - android-29
-    - sys-img-x86-android-26
   licenses:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 if: "(branch = master AND type = push) OR (head_branch != master AND type = pull_request)"
-before_install:
-  - git fetch origin head_branch
-  - export FILES_CHANGED="$(git --no-pager diff --name-only --diff-filter AM FETCH_HEAD | egrep .java$ )"
-  - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a -c 100M
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
 install:
   - "./travis/install.sh"
 stages:
@@ -41,23 +33,6 @@ jobs:
   include:
     - stage: Building Project
       script: "./gradlew check"
-      env: JOB=Checking Build
+      env: JOB=Build
     - script: "./gradlew detekt"
-      env: JOB=Running Linter
-    - script: "./gradlew mokaRun --profile"
-      env: JOB=Running UI Tests
-    - script: "./gradlew uploadToSaucelabs"
-      env:
-        - JOB=Uploading APK to Saucylabs
-        - STG_API_URL=$STG_SERVER_URL
-      if: branch = master AND type = push
-after_success:
-  - bundle exec danger
-  - reports-publisher
-after_failure:
-  - bundle exec danger
-  - reports-publisher
-  - "./gradlew mokaDisconnect"
-notifications:
-  webhooks:
-    - https://devhose.spt-engprod-pro.schibsted.io/devhose/travis
+      env: JOB=Linter

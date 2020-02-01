@@ -31,7 +31,7 @@ detekt {
     reports {
         html {
             enabled = true
-            destination = file("$rootDir/build/reports/detekt")
+            destination = file("$rootDir/build/reports/detekt/report.html")
         }
     }
 }
