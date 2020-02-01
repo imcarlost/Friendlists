@@ -1,0 +1,55 @@
+apply from: 'versions.gradle'
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    kapt deps.room.compiler
+    api deps.kotlin.std_lib
+    api deps.androidx.appcompat
+    api deps.androidx.core_ktx
+    api deps.androidx.constraint_layout
+    api deps.androidx.lifecycle_ext
+    api deps.androidx.lifecycle_viewmodel
+    api deps.androidx.recycler_view
+    api deps.retrofit.runtime
+    api deps.retrofit.gson
+    api deps.retrofit.rx
+    api deps.room.runtime
+    api deps.koin.core
+    api deps.koin.scope
+    api deps.koin.viewmodel
+    api deps.rx.core
+    api deps.rx.android
+    api deps.okhttp_logging_interceptor
+    api deps.timber
+    //Testing
+    testImplementation deps.testing.junit
+    testImplementation deps.testing.koin
+    androidTestImplementation deps.testing.core
+    androidTestImplementation deps.testing.rules
+    androidTestImplementation deps.testing.runner
+    androidTestImplementation deps.testing.ext
+    androidTestImplementation deps.testing.espresso
+}

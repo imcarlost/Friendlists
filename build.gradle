@@ -1,0 +1,26 @@
+buildscript {
+    apply from: 'versions.gradle'
+    ext.kotlin_version = deps.kotlin.version
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath deps.project.kotlin
+        classpath deps.project.gradle
+    }
+}
+
+allprojects {
+    addRepos(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+repositories {
+    google()
+}
