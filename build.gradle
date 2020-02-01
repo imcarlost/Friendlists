@@ -13,8 +13,27 @@ buildscript {
     }
 }
 
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.5.0"
+}
+
 allprojects {
     addRepos(repositories)
+}
+
+detekt {
+    version = "1.5.0"
+    autoCorrect = true
+    failFast = false
+    config = files("$rootDir/tools/detekt.yml")
+    input = files(rootProject.projectDir)
+
+    reports {
+        html {
+            enabled = true
+            destination = file("$rootDir/build/reports/detekt/report.html")
+        }
+    }
 }
 
 task clean(type: Delete) {
