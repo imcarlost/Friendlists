@@ -22,9 +22,6 @@ android:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
-if: "(branch = master AND type = push) OR (head_branch != master AND type = pull_request)"
-install:
-  - "./travis/install.sh"
 stages:
   - name: Building Project
   - name: Running Tests
