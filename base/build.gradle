@@ -45,11 +45,11 @@ dependencies {
     api deps.okhttp_logging_interceptor
     api deps.timber
     //Testing
-    testImplementation deps.testing.junit
-    testImplementation deps.testing.koin
-    androidTestImplementation deps.testing.core
-    androidTestImplementation deps.testing.rules
-    androidTestImplementation deps.testing.runner
-    androidTestImplementation deps.testing.ext
-    androidTestImplementation deps.testing.espresso
+    api deps.testing.junit
+    api deps.testing.koin
+    api deps.testing.core
+    api deps.testing.rules
+    api deps.testing.runner
+    api deps.testing.ext
+    api deps.testing.espresso
 }
