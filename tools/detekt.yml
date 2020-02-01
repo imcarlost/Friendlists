@@ -25,6 +25,7 @@ console-reports:
   #  - 'BuildFailureReport'
 
 comments:
+  excludes: "**/*Test.kt, **/*Spec.kt"
   active: true
   CommentOverPrivateFunction:
     active: true
@@ -265,6 +266,7 @@ naming:
     active: true
     functionPattern: '^([a-z$][a-zA-Z$0-9]*)|(`.*`)$'
     excludeClassPattern: '$^'
+    excludes: "**/*Test.kt, **/*Spec.kt"
   MatchingDeclarationName:
     active: false
   MemberNameEqualsClassName:
@@ -368,6 +370,7 @@ style:
     ignoreAnnotation: false
     ignoreNamedArgument: true
     ignoreEnums: true
+    excludes: "**/*Test.kt, **/*Spec.kt"
   MandatoryBracesIfStatements:
     active: true
   MaxLineLength:
