@@ -39,6 +39,8 @@ dependencies {
     api deps.androidx.lifecycle_ext
     api deps.androidx.lifecycle_viewmodel
     api deps.androidx.recycler_view
+    api deps.androidx.navigation_fragment
+    api deps.androidx.navigation_ui
     api deps.retrofit.runtime
     api deps.retrofit.gson
     api deps.retrofit.rx
