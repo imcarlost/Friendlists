@@ -19,7 +19,7 @@ interface UserDao {
     val all: List<UserEntity>
 
     @Query("SELECT COUNT(*) FROM ${UserEntity.TABLE_NAME}")
-    fun count(page: Int): Int
+    fun count(): Int
 
     @Query("DELETE FROM ${UserEntity.TABLE_NAME}")
     fun nukeDatabase()

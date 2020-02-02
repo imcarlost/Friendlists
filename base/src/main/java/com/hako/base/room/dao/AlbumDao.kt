@@ -19,7 +19,7 @@ interface AlbumDao {
     val all: List<AlbumEntity>
 
     @Query("SELECT COUNT(*) FROM ${AlbumEntity.TABLE_NAME}")
-    fun count(page: Int): Int
+    fun count(): Int
 
     @Query("DELETE FROM ${AlbumEntity.TABLE_NAME}")
     fun nukeDatabase()

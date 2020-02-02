@@ -10,7 +10,7 @@ import com.hako.base.room.entities.PhotoEntity
 import com.hako.base.room.entities.UserEntity
 
 @Database(entities = [UserEntity::class, AlbumEntity::class, PhotoEntity::class], version = 1, exportSchema = false)
-abstract class Database : RoomDatabase() {
+abstract class BaseDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun albumDao(): AlbumDao
     abstract fun photoDao(): PhotoDao

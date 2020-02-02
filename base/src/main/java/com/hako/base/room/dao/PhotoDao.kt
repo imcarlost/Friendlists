@@ -19,7 +19,7 @@ interface PhotoDao {
     val all: List<PhotoEntity>
 
     @Query("SELECT COUNT(*) FROM ${PhotoEntity.TABLE_NAME}")
-    fun count(page: Int): Int
+    fun count(): Int
 
     @Query("DELETE FROM ${PhotoEntity.TABLE_NAME}")
     fun nukeDatabase()
