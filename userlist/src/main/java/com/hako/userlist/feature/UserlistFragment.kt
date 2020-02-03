@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hako.base.domain.network.RequestStatus
+import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
 import com.hako.base.extensions.toast
+import com.hako.base.extensions.visible
 import com.hako.userlist.model.UserViewable
 import com.hako.userlist.viewmodel.UserlistViewmodel
 import com.hako.userlist.widget.UserlistAdapter
@@ -40,15 +42,23 @@ class UserlistFragment : Fragment() {
 
         viewModel.requestStatus.observeNonNull(this) {
             when (it) {
-                RequestStatus.Ready -> { context?.toast("Ready") }
-                RequestStatus.Loading -> { context?.toast("Loading") }
-                RequestStatus.Errored -> { context?.toast("Errored") }
+                RequestStatus.Ready -> {
+                    fragment_userlist_error_overlay.gone()
+                    fragment_userlist_loading_overlay.gone()
+                }
+                RequestStatus.Loading -> {
+                    fragment_userlist_error_overlay.gone()
+                    fragment_userlist_loading_overlay.visible()
+                }
+                RequestStatus.Errored -> {
+                    fragment_userlist_error_overlay.visible()
+                    fragment_userlist_loading_overlay.gone()
+                }
             }
         }
     }
 
     private fun handleFetchError(throwable: Throwable) {
-        context?.toast("Could't get data")
         Timber.e(throwable)
     }
 
