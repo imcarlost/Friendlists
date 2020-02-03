@@ -37,6 +37,8 @@ dependencies {
     api deps.androidx.lifecycle_ext
     api deps.androidx.lifecycle_viewmodel
     api deps.androidx.recycler_view
+    api deps.androidx.navigation_fragment
+    api deps.androidx.navigation_ui
     api deps.retrofit.runtime
     api deps.retrofit.gson
     api deps.retrofit.rx
@@ -48,6 +50,7 @@ dependencies {
     api deps.rx.android
     api deps.okhttp_logging_interceptor
     api deps.timber
+    api deps.lottie
     //Testing
     api deps.testing.junit
     api deps.testing.koin
