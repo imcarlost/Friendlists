@@ -1,4 +1,4 @@
-package com.hako.base.room.entities
+package com.hako.base.domain.database.entities
 
 import androidx.room.Entity
 import androidx.room.Index

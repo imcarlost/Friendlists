@@ -2,7 +2,7 @@ package com.hako.friendlist.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.hako.base.room.entities.UserEntity
+import com.hako.base.domain.database.entities.UserEntity
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -20,9 +20,9 @@ data class UserViewable(
     val realName: String,
     val userName: String,
     var isFavorite: Boolean = false
-) {
-    fun User.toUserViewable() = UserViewable(this.id, this.realName, this.userName)
+)
 
-    fun UserEntity.toUserViewable() = UserViewable(this.id, this.realName, this.userName)
-}
+fun User.toUserEntity() = UserEntity(this.id, this.realName, this.userName, this.email, this.phone, this.website)
+
+fun UserEntity.toUserViewable() = UserViewable(this.id, this.realName, this.userName)
 

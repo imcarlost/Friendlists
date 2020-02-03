@@ -1,7 +1,8 @@
 package com.hako.friendlists
 
 import android.app.Application
-import com.hako.base.di.baseModule
+import com.hako.friendlist.di.userlistModules
+import com.hako.friendlists.di.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -24,7 +25,8 @@ class MainApplication : Application() {
 
             modules(
                 listOf(
-                    baseModule
+                    appModules,
+                    userlistModules
                 )
             )
         }
