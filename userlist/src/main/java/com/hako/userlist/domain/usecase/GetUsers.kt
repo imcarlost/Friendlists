@@ -2,7 +2,7 @@ package com.hako.userlist.domain.usecase
 
 import com.hako.base.domain.UseCase
 import com.hako.base.domain.database.dao.UserDao
-import com.hako.userlist.domain.datasource.UserlistDatasource
+import com.hako.userlist.domain.datasource.UserlistRemoteApi
 import com.hako.userlist.model.UserViewable
 import com.hako.userlist.model.toUserEntity
 import com.hako.userlist.model.toUserViewable
@@ -14,7 +14,7 @@ import org.koin.core.get
 class GetUsers(private val dao: UserDao) : KoinComponent,
     UseCase<UserViewable> {
 
-    private val api: UserlistDatasource = get()
+    private val api: UserlistRemoteApi = get()
 
     override fun execute(
         onSuccess: (List<UserViewable>) -> Unit,
