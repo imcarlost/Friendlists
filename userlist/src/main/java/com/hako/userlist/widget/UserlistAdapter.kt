@@ -1,11 +1,11 @@
-package com.hako.friendlist.widget
+package com.hako.userlist.widget
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hako.base.extensions.autoNotify
-import com.hako.friendlist.model.UserViewable
+import com.hako.userlist.model.UserViewable
 import com.hako.friendlist_userlist.R
 import kotlinx.android.synthetic.main.item_user_card.view.*
 import kotlin.properties.Delegates

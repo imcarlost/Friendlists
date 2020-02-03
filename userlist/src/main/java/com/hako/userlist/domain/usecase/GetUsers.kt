@@ -1,11 +1,11 @@
-package com.hako.friendlist.domain.usecase
+package com.hako.userlist.domain.usecase
 
 import com.hako.base.domain.UseCase
 import com.hako.base.domain.database.dao.UserDao
-import com.hako.friendlist.domain.datasource.UserlistDatasource
-import com.hako.friendlist.model.UserViewable
-import com.hako.friendlist.model.toUserEntity
-import com.hako.friendlist.model.toUserViewable
+import com.hako.userlist.domain.datasource.UserlistDatasource
+import com.hako.userlist.model.UserViewable
+import com.hako.userlist.model.toUserEntity
+import com.hako.userlist.model.toUserViewable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent

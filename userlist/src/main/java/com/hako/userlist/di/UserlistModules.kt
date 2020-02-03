@@ -1,10 +1,10 @@
-package com.hako.friendlist.di
+package com.hako.userlist.di
 
 import com.hako.base.domain.network.RemoteClient
-import com.hako.friendlist.domain.datasource.UserlistDatasource
-import com.hako.friendlist.domain.datasource.UserlistRemoteApi
-import com.hako.friendlist.domain.usecase.GetUsers
-import com.hako.friendlist.viewmodel.UserlistViewmodel
+import com.hako.userlist.domain.datasource.UserlistDatasource
+import com.hako.userlist.domain.datasource.UserlistRemoteApi
+import com.hako.userlist.domain.usecase.GetUsers
+import com.hako.userlist.viewmodel.UserlistViewmodel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

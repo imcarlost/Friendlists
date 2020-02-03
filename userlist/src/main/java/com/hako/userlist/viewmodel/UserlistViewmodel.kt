@@ -1,4 +1,4 @@
-package com.hako.friendlist.viewmodel
+package com.hako.userlist.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,8 +7,8 @@ import com.hako.base.domain.network.RequestStatus.Ready
 import com.hako.base.domain.network.RequestStatus.Loading
 import com.hako.base.domain.network.RequestStatus.Errored
 import com.hako.base.domain.Either
-import com.hako.friendlist.domain.usecase.GetUsers
-import com.hako.friendlist.model.UserViewable
+import com.hako.userlist.domain.usecase.GetUsers
+import com.hako.userlist.model.UserViewable
 import org.koin.core.KoinComponent
 import org.koin.core.get
 

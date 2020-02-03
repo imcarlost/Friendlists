@@ -1,6 +1,6 @@
-package com.hako.friendlist.domain.datasource
+package com.hako.userlist.domain.datasource
 
-import com.hako.friendlist.model.User
+import com.hako.userlist.model.User
 import io.reactivex.Single
 import org.koin.core.KoinComponent
 import org.koin.core.get

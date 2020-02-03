@@ -1,4 +1,4 @@
-package com.hako.friendlist.feature
+package com.hako.userlist.feature
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hako.base.domain.network.RequestStatus
 import com.hako.base.extensions.observeNonNull
 import com.hako.base.extensions.toast
-import com.hako.friendlist.model.UserViewable
-import com.hako.friendlist.viewmodel.UserlistViewmodel
-import com.hako.friendlist.widget.UserlistAdapter
+import com.hako.userlist.model.UserViewable
+import com.hako.userlist.viewmodel.UserlistViewmodel
+import com.hako.userlist.widget.UserlistAdapter
 import com.hako.friendlist_userlist.R
 import kotlinx.android.synthetic.main.fragment_userlist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

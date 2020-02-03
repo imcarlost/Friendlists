@@ -1,7 +1,7 @@
 package com.hako.friendlists
 
 import android.app.Application
-import com.hako.friendlist.di.userlistModules
+import com.hako.userlist.di.userlistModules
 import com.hako.friendlists.di.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

@@ -1,4 +1,4 @@
-package com.hako.friendlist.model
+package com.hako.userlist.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
