@@ -59,11 +59,4 @@ class UserViewHolder(private val view: View,
             onFavoriteClick(user)
         }
     }
-
-    private fun setFavorite(status: Boolean) {
-        when (status) {
-            true -> view.item_user_card_like_button.like()
-            false -> view.item_user_card_like_button.dislike()
-        }
-    }
 }
