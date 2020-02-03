@@ -2,6 +2,7 @@ package com.hako.friendlist.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.hako.base.room.entities.UserEntity
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -10,35 +11,18 @@ data class User(
     @SerializedName("name") val realName: String,
     @SerializedName("username") val userName: String,
     @SerializedName("email") val email: String,
-    @SerializedName("amount") val balance: Address,
     @SerializedName("phone") val phone: String,
-    @SerializedName("website") val website: String,
-    @SerializedName("company") val company: Company
-) : Parcelable {
+    @SerializedName("website") val website: String
+) : Parcelable
 
-    @Parcelize
-    data class Address(
-        @SerializedName("street") val street: String,
-        @SerializedName("suite") val realName: String,
-        @SerializedName("city") val userName: String,
-        @SerializedName("zipcode") val email: String,
-        @SerializedName("geo") val geoLocation: GeoLocation
-    ) : Parcelable {
+data class UserViewable(
+    val id: Int,
+    val realName: String,
+    val userName: String,
+    var isFavorite: Boolean = false
+) {
+    fun User.toUserViewable() = UserViewable(this.id, this.realName, this.userName)
 
-        @Parcelize
-        data class GeoLocation(
-            @SerializedName("lat") val latitude: String,
-            @SerializedName("lng") val longitude: String
-        ) : Parcelable
-    }
-
-    @Parcelize
-    data class Company(
-        @SerializedName("name") val name: String,
-        @SerializedName("catchPhrase") val catchPhrase: String,
-        @SerializedName("bs") val keywords: String
-    ) : Parcelable {
-        fun getKeywordList() = keywords.split(" ")
-    }
+    fun UserEntity.toUserViewable() = UserViewable(this.id, this.realName, this.userName)
 }
 
