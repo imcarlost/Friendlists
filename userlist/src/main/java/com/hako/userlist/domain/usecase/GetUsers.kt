@@ -1,8 +1,7 @@
 package com.hako.userlist.domain.usecase
 
-import com.hako.base.domain.UseCase
 import com.hako.base.domain.database.dao.UserDao
-import com.hako.userlist.domain.datasource.UserlistDatasource
+import com.hako.userlist.domain.datasource.UserlistRemoteApi
 import com.hako.userlist.model.UserViewable
 import com.hako.userlist.model.toUserEntity
 import com.hako.userlist.model.toUserViewable
@@ -11,12 +10,11 @@ import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent
 import org.koin.core.get
 
-class GetUsers(private val dao: UserDao) : KoinComponent,
-    UseCase<UserViewable> {
+class GetUsers(private val dao: UserDao) : KoinComponent {
 
-    private val api: UserlistDatasource = get()
+    private val api: UserlistRemoteApi = get()
 
-    override fun execute(
+    fun execute(
         onSuccess: (List<UserViewable>) -> Unit,
         onError: (Throwable) -> Unit,
         onLoading: () -> Unit
@@ -25,7 +23,7 @@ class GetUsers(private val dao: UserDao) : KoinComponent,
             .subscribeOn(Schedulers.io())
             .doOnError { onError(it) }
             .doOnSuccess { dbUsers ->
-                if (dbUsers.isEmpty() || dbUsers.count() == 0) {
+                if (dbUsers.isEmpty()) {
                     api.getUsers()
                         .doOnSuccess {
                             dao.saveAll(it.map { user -> user.toUserEntity() })

@@ -6,4 +6,6 @@
 
     <include app:graph="@navigation/userlist_navigation" />
 
+    <include app:graph="@navigation/albumlist_navigation" />
+
 </navigation>

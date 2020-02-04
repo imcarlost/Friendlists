@@ -1,6 +1,7 @@
 package com.hako.friendlists
 
 import android.app.Application
+import com.hako.albumlist.di.albumListModules
 import com.hako.userlist.di.userlistModules
 import com.hako.friendlists.di.appModules
 import org.koin.android.ext.koin.androidContext
@@ -26,7 +27,8 @@ class MainApplication : Application() {
             modules(
                 listOf(
                     appModules,
-                    userlistModules
+                    userlistModules,
+                    albumListModules
                 )
             )
         }

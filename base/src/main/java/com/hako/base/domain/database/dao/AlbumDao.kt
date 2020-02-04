@@ -18,6 +18,9 @@ interface AlbumDao {
     @get:Query("SELECT * FROM ${AlbumEntity.TABLE_NAME}")
     val all: List<AlbumEntity>
 
+    @Query("SELECT * FROM ${AlbumEntity.TABLE_NAME} WHERE userId = :userId ORDER BY id ASC")
+    fun getAlbums(userId: Int): List<AlbumEntity>
+
     @Query("SELECT COUNT(*) FROM ${AlbumEntity.TABLE_NAME}")
     fun count(): Int
 
