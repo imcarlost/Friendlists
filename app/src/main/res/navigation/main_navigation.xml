@@ -2,8 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/userlist_navigation">
+    app:startDestination="@id/albumlist_navigation">
 
     <include app:graph="@navigation/userlist_navigation" />
+
+    <include app:graph="@navigation/albumlist_navigation" />
 
 </navigation>

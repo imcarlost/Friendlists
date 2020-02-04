@@ -1,4 +1,4 @@
-package com.hako.userlist.feature
+package com.hako.albumlist.feature
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,33 +6,35 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hako.albumlist.R
+import com.hako.albumlist.model.AlbumViewable
+import com.hako.albumlist.viewmodel.AlbumlistViewmodel
+import com.hako.albumlist.widget.AlbumlistAdapter
 import com.hako.base.domain.network.RequestStatus
 import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
 import com.hako.base.extensions.toast
 import com.hako.base.extensions.visible
-import com.hako.userlist.model.UserViewable
-import com.hako.userlist.viewmodel.UserlistViewmodel
-import com.hako.userlist.widget.UserlistAdapter
-import com.hako.friendlist_userlist.R
-import kotlinx.android.synthetic.main.fragment_userlist.*
+import kotlinx.android.synthetic.main.fragment_albumlist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class UserlistFragment : Fragment() {
+class AlbumlistFragment : Fragment() {
 
-    private val viewModel: UserlistViewmodel by viewModel()
-    private val listAdapter by lazy { UserlistAdapter() }
+    private val viewModel: AlbumlistViewmodel by viewModel()
+    private val listAdapter by lazy { AlbumlistAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_userlist, container, false)
+    ): View = inflater.inflate(R.layout.fragment_albumlist, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
         setObservers()
-        viewModel.fetchUsers()
+        
+        //TODO: Get user by bundle
+        viewModel.fetchAlbums(2)
     }
 
     private fun setObservers() {
@@ -43,16 +45,16 @@ class UserlistFragment : Fragment() {
         viewModel.requestStatus.observeNonNull(this) {
             when (it) {
                 RequestStatus.Ready -> {
-                    fragment_userlist_error_overlay.gone()
-                    fragment_userlist_loading_overlay.gone()
+                    fragment_albumlist_error_overlay.gone()
+                    fragment_albumlist_loading_overlay.gone()
                 }
                 RequestStatus.Loading -> {
-                    fragment_userlist_error_overlay.gone()
-                    fragment_userlist_loading_overlay.visible()
+                    fragment_albumlist_error_overlay.gone()
+                    fragment_albumlist_loading_overlay.visible()
                 }
                 RequestStatus.Errored -> {
-                    fragment_userlist_error_overlay.visible()
-                    fragment_userlist_loading_overlay.gone()
+                    fragment_albumlist_error_overlay.visible()
+                    fragment_albumlist_loading_overlay.gone()
                 }
             }
         }
@@ -62,20 +64,16 @@ class UserlistFragment : Fragment() {
         Timber.e(throwable)
     }
 
-    private fun handleFetchSuccess(users: List<UserViewable>) {
+    private fun handleFetchSuccess(users: List<AlbumViewable>) {
         listAdapter.addAll(users)
     }
 
     private fun setRecycler() {
-        fragment_userlist_recycler_container.apply {
+        fragment_albumlist_recycler_container.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter.apply {
                 onItemClick = {
-                    context.toast(it.realName)
-                }
-
-                onFavoriteClick = {
-                    context.toast(it.userName)
+                    context.toast(it.title)
                 }
             }
         }

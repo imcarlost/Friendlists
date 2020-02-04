@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/albumlist_navigation"
+    app:startDestination="@id/albumlistFragment">
+
+    <fragment
+        android:id="@+id/albumlistFragment"
+        android:name="com.hako.albumlist.feature.AlbumlistFragment"
+        tools:layout="@layout/fragment_albumlist"
+        android:label="AlbumListFragment" />
+
+</navigation>
