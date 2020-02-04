@@ -32,8 +32,7 @@ class AlbumlistFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
         setObservers()
-        
-        //TODO: Get user by bundle
+        // TODO: Get user by bundle
         viewModel.fetchAlbums(2)
     }
 
