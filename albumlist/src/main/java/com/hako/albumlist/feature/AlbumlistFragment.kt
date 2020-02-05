@@ -14,7 +14,6 @@ import com.hako.albumlist.widget.AlbumlistAdapter
 import com.hako.base.domain.network.RequestStatus
 import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
-import com.hako.base.extensions.toast
 import com.hako.base.extensions.visible
 import com.hako.base.navigation.NavigationRouter
 import kotlinx.android.synthetic.main.fragment_albumlist.*
