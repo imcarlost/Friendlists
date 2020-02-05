@@ -3,7 +3,7 @@ package com.hako.albumlist.domain.usecase
 import com.hako.albumlist.domain.datasource.AlbumlistRemoteApi
 import com.hako.albumlist.model.AlbumViewable
 import com.hako.albumlist.model.toAlbumEntity
-import com.hako.albumlist.model.toUserViewable
+import com.hako.albumlist.model.toAlbumViewable
 import com.hako.base.domain.database.dao.AlbumDao
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
@@ -28,13 +28,13 @@ class GetAlbum(private val dao: AlbumDao) : KoinComponent {
                     api.getAlbums(userId)
                         .doOnSuccess {
                             dao.saveAll(it.map { album -> album.toAlbumEntity() })
-                            onSuccess(dao.getAlbums(userId).map { album -> album.toUserViewable() })
+                            onSuccess(dao.getAlbums(userId).map { album -> album.toAlbumViewable() })
                         }
                         .doOnSubscribe { onLoading() }
                         .subscribeOn(Schedulers.io())
                         .subscribe({}, { onError(it) })
                 } else {
-                    onSuccess(dbAlbum.map { it.toUserViewable() })
+                    onSuccess(dbAlbum.map { it.toAlbumViewable() })
                 }
             }
             .subscribe()

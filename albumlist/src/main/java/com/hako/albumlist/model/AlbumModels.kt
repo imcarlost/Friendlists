@@ -20,5 +20,5 @@ data class AlbumViewable(
 
 fun Album.toAlbumEntity() = AlbumEntity(this.id, this.userId, this.title)
 
-fun AlbumEntity.toUserViewable() = AlbumViewable(this.id, this.userId, this.title)
+fun AlbumEntity.toAlbumViewable() = AlbumViewable(this.id, this.userId, this.title)
 
