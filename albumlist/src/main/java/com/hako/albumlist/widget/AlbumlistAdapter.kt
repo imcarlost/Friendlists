@@ -20,7 +20,7 @@ class AlbumlistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var onItemClick: (AlbumViewable) -> Unit = { }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        UserViewHolder(
+        AlbumViewHolder(
             LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.item_album_card, parent, false),
@@ -37,12 +37,12 @@ class AlbumlistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(viewholder: RecyclerView.ViewHolder, position: Int) =
         when (viewholder) {
-            is UserViewHolder -> viewholder.bind(items[position])
+            is AlbumViewHolder -> viewholder.bind(items[position])
             else -> throw NoWhenBranchMatchedException("Undefined viewholder")
         }
 }
 
-class UserViewHolder(private val view: View,
+class AlbumViewHolder(private val view: View,
                      private val onItemClick: (AlbumViewable) -> Unit) :
     RecyclerView.ViewHolder(view) {
 

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/userlist_navigation"
-    app:startDestination="@id/userListFragment">
+    app:startDestination="@id/userlistFragment">
 
     <fragment
-        android:id="@+id/userListFragment"
+        android:id="@+id/userlistFragment"
         android:name="com.hako.userlist.feature.UserlistFragment"
         tools:layout="@layout/fragment_userlist"
-        android:label="UserListFragment" />
+        android:label="UserlistFragment" />
 
 </navigation>

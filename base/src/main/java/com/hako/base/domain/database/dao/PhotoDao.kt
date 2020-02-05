@@ -18,6 +18,9 @@ interface PhotoDao {
     @get:Query("SELECT * FROM ${PhotoEntity.TABLE_NAME}")
     val all: List<PhotoEntity>
 
+    @Query("SELECT * FROM ${PhotoEntity.TABLE_NAME} WHERE albumId = :albumId ORDER BY id ASC")
+    fun getPhotos(albumId: Int): List<PhotoEntity>
+
     @Query("SELECT COUNT(*) FROM ${PhotoEntity.TABLE_NAME}")
     fun count(): Int
 

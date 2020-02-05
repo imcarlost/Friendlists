@@ -50,4 +50,5 @@ dependencies {
     implementation project(":base")
     implementation project(":userlist")
     implementation project(":albumlist")
+    implementation project(":photolist")
 }

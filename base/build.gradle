@@ -51,6 +51,7 @@ dependencies {
     api deps.okhttp_logging_interceptor
     api deps.timber
     api deps.lottie
+    api deps.picasso
     //Testing
     api deps.testing.junit
     api deps.testing.koin

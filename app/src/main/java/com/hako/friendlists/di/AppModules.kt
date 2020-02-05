@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.hako.base.domain.database.DatabaseClient
 import com.hako.base.domain.network.RemoteClient
 import com.hako.friendlists.BuildConfig
+import com.squareup.picasso.Picasso
 import org.koin.dsl.module
 
 val appModules = module {
@@ -15,4 +16,7 @@ val appModules = module {
 
     // Retrofit
     single { RemoteClient(BuildConfig.BASE_ENDPOINT) }
+
+    // Picasso
+    single { Picasso.get() }
 }

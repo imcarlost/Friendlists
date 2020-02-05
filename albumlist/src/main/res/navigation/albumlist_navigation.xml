@@ -9,6 +9,6 @@
         android:id="@+id/albumlistFragment"
         android:name="com.hako.albumlist.feature.AlbumlistFragment"
         tools:layout="@layout/fragment_albumlist"
-        android:label="AlbumListFragment" />
+        android:label="AlbumlistFragment" />
 
 </navigation>
