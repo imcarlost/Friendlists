@@ -47,10 +47,6 @@ class PhotoViewHolder(private val view: View) :
 
     private val picasso: Picasso by inject()
 
-    init {
-        picasso.setIndicatorsEnabled(true)
-    }
-
     fun bind(photo: PhotoViewable) = with(view) {
         picasso.load(photo.photoUrl)
             .placeholder(R.drawable.img_photo_placeholder)
