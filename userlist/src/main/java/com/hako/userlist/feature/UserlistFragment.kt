@@ -75,7 +75,7 @@ class UserlistFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter.apply {
                 onItemClick = {
-                    navigation.sendNavigation(UserlistNavigation.ClickedOnUser(it.id))
+                    navigation.sendNavigation(UserlistNavigation.ClickedOnUser(it.id, it.realName))
                 }
 
                 onFavoriteClick = {

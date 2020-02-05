@@ -12,6 +12,9 @@ import com.hako.friendlists.R
 import com.hako.photolist.feature.PHOTOLIST_FRAGMENT_BUNDLE_ALBUM_ID
 import com.hako.userlist.navigation.UserlistNavigation
 
+// This sets the fragment title, it's referenced in every navigation
+const val FRAGMENT_TITLE = "actionTitle"
+
 class NavigationViewmodel : ViewModel() {
 
     val navigate = MutableLiveData<Pair<@IdRes Int, Bundle>>()
@@ -29,6 +32,7 @@ class NavigationViewmodel : ViewModel() {
             is UserlistNavigation.ClickedOnUser -> navigate.postValue(
                 buildNavigation(R.id.action_userlistFragment_to_albumlistFragment, Bundle().apply {
                     putInt(ALBUMLIST_FRAGMENT_BUNDLE_USER_ID, event.userId)
+                    putString(FRAGMENT_TITLE, event.userName)
                 })
             )
         }

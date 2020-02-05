@@ -3,6 +3,7 @@ package com.hako.friendlists.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.hako.base.extensions.observeNonNull
 import com.hako.base.navigation.NavigationRouter
 import com.hako.friendlists.BuildConfig
@@ -36,10 +37,17 @@ class MainActivity : AppCompatActivity() {
             // Pair.second is a Bundle
             navController.navigate(pair.first, pair.second)
         }
+
+        setupActionBarWithNavController(this, navController)
     }
 
     private fun setupPicasso() {
         // Show cache indicator on images just for debug builds
         picasso.setIndicatorsEnabled(BuildConfig.DEBUG)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        navController.navigateUp()
+        return super.onSupportNavigateUp()
     }
 }

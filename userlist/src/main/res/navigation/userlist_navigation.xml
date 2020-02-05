@@ -9,6 +9,6 @@
         android:id="@+id/userlistFragment"
         android:name="com.hako.userlist.feature.UserlistFragment"
         tools:layout="@layout/fragment_userlist"
-        android:label="UserlistFragment" />
+        android:label="Friendlist" />
 
 </navigation>
