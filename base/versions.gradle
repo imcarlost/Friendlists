@@ -20,6 +20,7 @@ versions.test = "1.2.0"
 versions.test_ext = "1.1.1"
 versions.espresso = "3.2.0"
 versions.lottie = "3.3.1"
+versions.picasso = "2.71828"
 
 def deps = [:]
 
@@ -77,5 +78,6 @@ deps.testing = testing
 deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_logging_interceptor"
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"
 deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
+deps.picasso = "com.squareup.picasso:picasso:$versions.picasso"
 
 ext.deps = deps

@@ -7,6 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
+
+private const val TIMEOUT_IN_SECONDS = 60L
 
 class RemoteClient(endpoint: String) {
     private val logger = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
@@ -17,6 +20,8 @@ class RemoteClient(endpoint: String) {
 
     private val client = OkHttpClient.Builder()
         .addInterceptor(logger)
+        .readTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+        .connectTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()

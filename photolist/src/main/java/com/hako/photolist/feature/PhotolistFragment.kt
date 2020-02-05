@@ -32,7 +32,7 @@ class PhotolistFragment : Fragment() {
         setRecycler()
         setObservers()
         // TODO: Get album by bundle
-        viewModel.fetchPhotos(2)
+        viewModel.fetchPhotos(1)
     }
 
     private fun setObservers() {

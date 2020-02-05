@@ -20,8 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_photo_placeholder"
-        android:contentDescription="Album photo" />
+        android:contentDescription="@string/album_photo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_photo_card_footer_container"

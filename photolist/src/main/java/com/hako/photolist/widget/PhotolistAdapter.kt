@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hako.base.extensions.autoNotify
 import com.hako.photolist.R
 import com.hako.photolist.model.PhotoViewable
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_photo_card.view.*
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 import kotlin.properties.Delegates
 
 class PhotolistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -40,11 +43,19 @@ class PhotolistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 }
 
 class PhotoViewHolder(private val view: View) :
-    RecyclerView.ViewHolder(view) {
+    RecyclerView.ViewHolder(view), KoinComponent {
+
+    private val picasso: Picasso by inject()
+
+    init {
+        picasso.setIndicatorsEnabled(true)
+    }
 
     fun bind(photo: PhotoViewable) = with(view) {
+        picasso.load(photo.photoUrl)
+            .placeholder(R.drawable.img_photo_placeholder)
+            .fit()
+            .into(item_photo_card_photo)
         item_photo_card_title.text = photo.title
-
-        // TODO load image
     }
 }
