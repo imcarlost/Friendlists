@@ -51,4 +51,6 @@ dependencies {
     implementation project(":userlist")
     implementation project(":albumlist")
     implementation project(":photolist")
+    testImplementation project(':testing')
+    androidTestImplementation project(':testing')
 }

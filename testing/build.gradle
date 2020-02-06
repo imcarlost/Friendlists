@@ -3,6 +3,4 @@ apply from: '../core.gradle'
 
 dependencies {
     implementation project(':base')
-    testImplementation project(':testing')
-    androidTestImplementation project(':testing')
 }
