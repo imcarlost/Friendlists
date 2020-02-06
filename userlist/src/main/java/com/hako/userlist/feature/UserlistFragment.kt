@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hako.base.domain.network.RequestStatus
 import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
-import com.hako.base.extensions.toast
 import com.hako.base.extensions.visible
 import com.hako.base.navigation.NavigationRouter
 import com.hako.base.navigation.ShowFabButton
@@ -23,11 +22,9 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-const val ALBUMLIST_FRAGMENT_BUNDLE_FAVORITES = "ALBUMLIST_FRAGMENT_BUNDLE_FAVORITES"
+open class UserlistFragment : Fragment(), ShowFabButton {
 
-class UserlistFragment : Fragment(), ShowFabButton {
-
-    private val viewModel: UserlistViewmodel by viewModel()
+    val viewModel: UserlistViewmodel by viewModel()
     private val listAdapter by lazy { UserlistAdapter() }
     private val navigation: NavigationRouter by inject()
 
@@ -39,7 +36,17 @@ class UserlistFragment : Fragment(), ShowFabButton {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
         setObservers()
+        doRequest()
+    }
+
+    open fun doRequest() {
         viewModel.fetchUsers()
+    }
+
+    override fun shouldShowFabButton() = true
+
+    override fun fabButtonPressed(): () -> Unit = {
+        navigation.sendNavigation(UserlistNavigation.ClickedOnFab)
     }
 
     private fun setObservers() {
