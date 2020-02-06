@@ -2,11 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/photolist_navigation">
+    app:startDestination="@id/userlist_navigation">
 
     <include app:graph="@navigation/userlist_navigation" />
+    <action
+        android:id="@+id/action_userlistFragment_to_albumlistFragment"
+        app:destination="@id/albumlist_navigation"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"/>
 
     <include app:graph="@navigation/albumlist_navigation" />
+    <action
+        android:id="@+id/action_albumlistFragment_to_photolistFragment"
+        app:destination="@id/photolist_navigation"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"/>
 
     <include app:graph="@navigation/photolist_navigation" />
 

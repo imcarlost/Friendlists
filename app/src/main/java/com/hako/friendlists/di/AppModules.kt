@@ -3,8 +3,11 @@ package com.hako.friendlists.di
 import androidx.room.Room
 import com.hako.base.domain.database.DatabaseClient
 import com.hako.base.domain.network.RemoteClient
+import com.hako.base.navigation.NavigationRouter
 import com.hako.friendlists.BuildConfig
+import com.hako.friendlists.viewmodel.NavigationViewmodel
 import com.squareup.picasso.Picasso
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModules = module {
@@ -19,4 +22,8 @@ val appModules = module {
 
     // Picasso
     single { Picasso.get() }
+
+    // Navigation
+    single { NavigationRouter() }
+    viewModel { NavigationViewmodel() }
 }

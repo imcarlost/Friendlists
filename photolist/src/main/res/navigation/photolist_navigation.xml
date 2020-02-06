@@ -9,6 +9,6 @@
         android:id="@+id/photolistFragment"
         android:name="com.hako.photolist.feature.PhotolistFragment"
         tools:layout="@layout/fragment_photolist"
-        android:label="PhotolistFragment" />
+        android:label="Photos" />
 
 </navigation>

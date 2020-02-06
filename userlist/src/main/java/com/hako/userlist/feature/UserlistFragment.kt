@@ -11,11 +11,14 @@ import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
 import com.hako.base.extensions.toast
 import com.hako.base.extensions.visible
+import com.hako.base.navigation.NavigationRouter
 import com.hako.userlist.model.UserViewable
 import com.hako.userlist.viewmodel.UserlistViewmodel
 import com.hako.userlist.widget.UserlistAdapter
 import com.hako.friendlist_userlist.R
+import com.hako.userlist.navigation.UserlistNavigation
 import kotlinx.android.synthetic.main.fragment_userlist.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -23,6 +26,7 @@ class UserlistFragment : Fragment() {
 
     private val viewModel: UserlistViewmodel by viewModel()
     private val listAdapter by lazy { UserlistAdapter() }
+    private val navigation: NavigationRouter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -71,7 +75,7 @@ class UserlistFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter.apply {
                 onItemClick = {
-                    context.toast(it.realName)
+                    navigation.sendNavigation(UserlistNavigation.ClickedOnUser(it.id, it.realName))
                 }
 
                 onFavoriteClick = {

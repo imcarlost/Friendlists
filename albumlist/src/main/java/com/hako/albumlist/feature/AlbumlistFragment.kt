@@ -8,21 +8,26 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hako.albumlist.R
 import com.hako.albumlist.model.AlbumViewable
+import com.hako.albumlist.navigation.AlbumlistNavigation
 import com.hako.albumlist.viewmodel.AlbumlistViewmodel
 import com.hako.albumlist.widget.AlbumlistAdapter
 import com.hako.base.domain.network.RequestStatus
 import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
-import com.hako.base.extensions.toast
 import com.hako.base.extensions.visible
+import com.hako.base.navigation.NavigationRouter
 import kotlinx.android.synthetic.main.fragment_albumlist.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+
+const val ALBUMLIST_FRAGMENT_BUNDLE_USER_ID = "ALBUMLIST_FRAGMENT_BUNDLE_USER_ID"
 
 class AlbumlistFragment : Fragment() {
 
     private val viewModel: AlbumlistViewmodel by viewModel()
     private val listAdapter by lazy { AlbumlistAdapter() }
+    private val navigation: NavigationRouter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -32,8 +37,12 @@ class AlbumlistFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
         setObservers()
-        // TODO: Get user by bundle
-        viewModel.fetchAlbums(2)
+        doRequest()
+    }
+
+    private fun doRequest() {
+        arguments?.getInt(ALBUMLIST_FRAGMENT_BUNDLE_USER_ID)?.let { viewModel.fetchAlbums(it) } ?:
+        throw UninitializedPropertyAccessException("The UserId is expected but it wasn't provided")
     }
 
     private fun setObservers() {
@@ -72,7 +81,7 @@ class AlbumlistFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter.apply {
                 onItemClick = {
-                    context.toast(it.title)
+                    navigation.sendNavigation(AlbumlistNavigation.ClickedOnAlbum(it.id))
                 }
             }
         }

@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_photolist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
+const val PHOTOLIST_FRAGMENT_BUNDLE_ALBUM_ID = "PHOTOLIST_FRAGMENT_BUNDLE_ALBUM_ID"
+
 class PhotolistFragment : Fragment() {
 
     private val viewModel: PhotolistViewmodel by viewModel()
@@ -31,8 +33,12 @@ class PhotolistFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
         setObservers()
-        // TODO: Get album by bundle
-        viewModel.fetchPhotos(1)
+        doRequest()
+    }
+
+    private fun doRequest() {
+        arguments?.getInt(PHOTOLIST_FRAGMENT_BUNDLE_ALBUM_ID)?.let { viewModel.fetchPhotos(it) } ?:
+        throw UninitializedPropertyAccessException("The AlbumId is expected but it wasn't provided")
     }
 
     private fun setObservers() {
