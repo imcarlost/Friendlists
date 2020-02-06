@@ -17,7 +17,8 @@ class GetUsers(private val dao: UserDao) : KoinComponent {
     fun execute(
         onSuccess: (List<UserViewable>) -> Unit,
         onError: (Throwable) -> Unit,
-        onLoading: () -> Unit
+        onLoading: () -> Unit,
+        onEmpty: () -> Unit
     ) {
         Single.fromCallable { dao.getAllUsers() }
             .subscribeOn(Schedulers.io())
@@ -26,8 +27,12 @@ class GetUsers(private val dao: UserDao) : KoinComponent {
                 if (dbUsers.isEmpty()) {
                     api.getUsers()
                         .doOnSuccess {
-                            dao.saveAll(it.map { user -> user.toUserEntity() })
-                            onSuccess(dao.getAllUsers().map { user -> user.toUserViewable() })
+                            if (it.isEmpty()) {
+                                onEmpty()
+                            } else {
+                                dao.saveAll(it.map { user -> user.toUserEntity() })
+                                onSuccess(dao.getAllUsers().map { user -> user.toUserViewable() })
+                            }
                         }
                         .doOnSubscribe { onLoading() }
                         .subscribeOn(Schedulers.io())

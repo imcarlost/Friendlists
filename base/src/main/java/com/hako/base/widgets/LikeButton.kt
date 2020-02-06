@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.like_button.view.*
 private const val LIKE_MIN_FRAME = 0
 private const val LIKE_MAX_FRAME = 28
 private const val LIKE_ANIM_SPEED = 1f
-private const val DISLIKE_MIN_FRAME = 28
+private const val DISLIKE_MIN_FRAME = 29
 private const val DISLIKE_MAX_FRAME = 70
 private const val DISLIKE_ANIM_SPEED = 2f
 
@@ -29,16 +29,24 @@ class LikeButton @JvmOverloads constructor(
     }
 
     fun dislike() {
-        like_button_animation_view.frame = LIKE_MIN_FRAME
+        like_button_animation_view.frame = DISLIKE_MAX_FRAME
     }
 
-    fun playLike() {
+    fun play() {
+        if (like_button_animation_view.frame <= LIKE_MAX_FRAME){
+            playDislike()
+        } else {
+            playLike()
+        }
+    }
+
+    private fun playLike() {
         like_button_animation_view.setMinAndMaxFrame(LIKE_MIN_FRAME, LIKE_MAX_FRAME)
         like_button_animation_view.speed = LIKE_ANIM_SPEED
         like_button_animation_view.playAnimation()
     }
 
-    fun playDislike() {
+    private fun playDislike() {
         like_button_animation_view.setMinAndMaxFrame(DISLIKE_MIN_FRAME, DISLIKE_MAX_FRAME)
         like_button_animation_view.speed = DISLIKE_ANIM_SPEED
         like_button_animation_view.playAnimation()
