@@ -13,7 +13,7 @@ data class UserEntity(
     val email: String,
     val phone: String,
     val website: String,
-    val isFavorite: Boolean = true
+    val isFavorite: Boolean = false
 ) {
     companion object {
         const val TABLE_NAME = "users"

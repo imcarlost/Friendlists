@@ -15,9 +15,6 @@ interface AlbumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveAll(entities: List<AlbumEntity>)
 
-    @get:Query("SELECT * FROM ${AlbumEntity.TABLE_NAME}")
-    val all: List<AlbumEntity>
-
     @Query("SELECT * FROM ${AlbumEntity.TABLE_NAME} WHERE userId = :userId ORDER BY id ASC")
     fun getAlbums(userId: Int): List<AlbumEntity>
 

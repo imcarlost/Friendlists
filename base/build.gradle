@@ -52,12 +52,6 @@ dependencies {
     api deps.timber
     api deps.lottie
     api deps.picasso
-    //Testing
-    api deps.testing.junit
-    api deps.testing.koin
-    api deps.testing.core
-    api deps.testing.rules
-    api deps.testing.runner
-    api deps.testing.ext
-    api deps.testing.espresso
+    testImplementation project(':testing')
+    androidTestImplementation project(':testing')
 }
