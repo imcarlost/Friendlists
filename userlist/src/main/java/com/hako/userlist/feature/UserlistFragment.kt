@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hako.base.domain.network.RequestStatus
 import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
-import com.hako.base.extensions.toast
 import com.hako.base.extensions.visible
 import com.hako.base.navigation.NavigationRouter
+import com.hako.base.navigation.ShowFabButton
 import com.hako.userlist.model.UserViewable
 import com.hako.userlist.viewmodel.UserlistViewmodel
 import com.hako.userlist.widget.UserlistAdapter
@@ -22,9 +22,9 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class UserlistFragment : Fragment() {
+open class UserlistFragment : Fragment(), ShowFabButton {
 
-    private val viewModel: UserlistViewmodel by viewModel()
+    val viewModel: UserlistViewmodel by viewModel()
     private val listAdapter by lazy { UserlistAdapter() }
     private val navigation: NavigationRouter by inject()
 
@@ -36,11 +36,21 @@ class UserlistFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
         setObservers()
+        doRequest()
+    }
+
+    open fun doRequest() {
         viewModel.fetchUsers()
     }
 
+    override fun shouldShowFabButton() = true
+
+    override fun fabButtonPressed(): () -> Unit = {
+        navigation.sendNavigation(UserlistNavigation.ClickedOnFab)
+    }
+
     private fun setObservers() {
-        viewModel.data.observeNonNull(this) {
+        viewModel.userList.observeNonNull(this) {
             it.either(::handleFetchError, ::handleFetchSuccess)
         }
 
@@ -49,16 +59,28 @@ class UserlistFragment : Fragment() {
                 RequestStatus.Ready -> {
                     fragment_userlist_error_overlay.gone()
                     fragment_userlist_loading_overlay.gone()
+                    fragment_userlist_empty_overlay.gone()
                 }
                 RequestStatus.Loading -> {
                     fragment_userlist_error_overlay.gone()
                     fragment_userlist_loading_overlay.visible()
+                    fragment_userlist_empty_overlay.gone()
                 }
                 RequestStatus.Errored -> {
                     fragment_userlist_error_overlay.visible()
                     fragment_userlist_loading_overlay.gone()
+                    fragment_userlist_empty_overlay.gone()
+                }
+                RequestStatus.Empty -> {
+                    fragment_userlist_error_overlay.gone()
+                    fragment_userlist_loading_overlay.gone()
+                    fragment_userlist_empty_overlay.visible()
                 }
             }
+        }
+
+        viewModel.emptyMessage.observeNonNull(this) {
+            fragment_userlist_empty_overlay.setLabel(it)
         }
     }
 
@@ -79,7 +101,7 @@ class UserlistFragment : Fragment() {
                 }
 
                 onFavoriteClick = {
-                    context.toast(it.userName)
+                    viewModel.updateUserFavoriteStatus(it.id, !it.isFavorite)
                 }
             }
         }

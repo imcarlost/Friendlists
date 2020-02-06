@@ -6,28 +6,28 @@
     android:background="@color/soft_background">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/network_error_overlay_animation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerInside"
+        android:id="@+id/empty_overlay_animation_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48"
+        app:layout_constraintVertical_bias="0.39"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/network_animation" />
+        app:lottie_rawRes="@raw/empty_animation" />
 
     <TextView
-        android:id="@+id/network_error_overlay_label"
+        android:id="@+id/empty_overlay_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Network error!"
+        android:text="No tienes favoritos!"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/network_error_overlay_animation_view"
-        app:layout_constraintStart_toStartOf="@+id/network_error_overlay_animation_view"
-        app:layout_constraintTop_toBottomOf="@+id/network_error_overlay_animation_view" />
+        app:layout_constraintEnd_toEndOf="@+id/empty_overlay_animation_view"
+        app:layout_constraintStart_toStartOf="@+id/empty_overlay_animation_view"
+        app:layout_constraintTop_toBottomOf="@+id/empty_overlay_animation_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

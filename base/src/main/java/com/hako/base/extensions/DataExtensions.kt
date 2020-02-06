@@ -11,3 +11,5 @@ fun <T> LiveData<T>.observeNonNull(owner: LifecycleOwner, func: (T) -> Unit) {
         }
     })
 }
+
+fun Int.wasUpdated() = this > 0

@@ -44,18 +44,26 @@ class UserlistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
 }
 
-class UserViewHolder(private val view: View,
-                     private val onItemClick: (UserViewable) -> Unit,
-                     private val onFavoriteClick: (UserViewable) -> Unit) :
+class UserViewHolder(
+    private val view: View,
+    private val onItemClick: (UserViewable) -> Unit,
+    private val onFavoriteClick: (UserViewable) -> Unit
+) :
     RecyclerView.ViewHolder(view) {
 
     fun bind(user: UserViewable) = with(view) {
         item_user_card_real_name.text = user.realName
         item_user_card_user_name.text = user.userName
+        if (user.isFavorite) {
+            item_user_card_like_button.like()
+        } else {
+            item_user_card_like_button.dislike()
+        }
         item_user_card_container.setOnClickListener {
             onItemClick(user)
         }
         item_user_card_like_button.setOnClickListener {
+            item_user_card_like_button.play()
             onFavoriteClick(user)
         }
     }

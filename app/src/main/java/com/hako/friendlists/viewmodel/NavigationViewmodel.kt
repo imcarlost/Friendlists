@@ -35,6 +35,9 @@ class NavigationViewmodel : ViewModel() {
                     putString(FRAGMENT_TITLE, event.userName)
                 })
             )
+            is UserlistNavigation.ClickedOnFab -> navigate.postValue(
+                buildNavigation(R.id.action_userlistFragment_to_favoriteUserlistFragment)
+            )
         }
     }
 

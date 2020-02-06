@@ -19,10 +19,10 @@ data class UserViewable(
     val id: Int,
     val realName: String,
     val userName: String,
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean
 )
 
 fun User.toUserEntity() = UserEntity(this.id, this.realName, this.userName, this.email, this.phone, this.website)
 
-fun UserEntity.toUserViewable() = UserViewable(this.id, this.realName, this.userName)
+fun UserEntity.toUserViewable() = UserViewable(this.id, this.realName, this.userName, this.isFavorite)
 
