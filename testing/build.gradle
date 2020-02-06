@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+apply from: '../core.gradle'
+apply from: 'versions.gradle'
+
+dependencies {
+    api deps.testing.junit
+    api deps.testing.koin
+    api deps.testing.core
+    api deps.testing.rules
+    api deps.testing.runner
+    api deps.testing.ext
+    api deps.testing.espresso
+    api deps.testing.fragments
+}

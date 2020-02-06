@@ -1,2 +1,2 @@
-include ':app', ':base', ':userlist', ':albumlist', ':photolist'
+include ':app', ':base', ':userlist', ':albumlist', ':photolist', ':testing'
 rootProject.name='Friendlists'

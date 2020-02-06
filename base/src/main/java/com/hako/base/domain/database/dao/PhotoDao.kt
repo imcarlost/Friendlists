@@ -15,9 +15,6 @@ interface PhotoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveAll(entities: List<PhotoEntity>)
 
-    @get:Query("SELECT * FROM ${PhotoEntity.TABLE_NAME}")
-    val all: List<PhotoEntity>
-
     @Query("SELECT * FROM ${PhotoEntity.TABLE_NAME} WHERE albumId = :albumId ORDER BY id ASC")
     fun getPhotos(albumId: Int): List<PhotoEntity>
 
