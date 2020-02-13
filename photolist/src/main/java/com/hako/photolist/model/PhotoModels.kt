@@ -1,12 +1,14 @@
 package com.hako.photolist.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.hako.base.domain.database.entities.PhotoEntity
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Photo(
+data class PhotoRemote(
     @SerializedName("id") val id: Int,
     @SerializedName("albumId") val albumId: Int,
     @SerializedName("title") val title: String,
@@ -14,14 +16,28 @@ data class Photo(
     @SerializedName("thumbnailUrl") val thumbnailUrl: String
 ) : Parcelable
 
-data class PhotoViewable(
+@Entity(tableName = PhotoEntity.TABLE_NAME, indices = [Index(value = ["id"], unique = true)])
+data class PhotoEntity(
+    @PrimaryKey
+    val id: Int,
+    val albumId: Int,
+    val title: String,
+    val photoUrl: String,
+    val thumbnailUrl: String
+) {
+    companion object {
+        const val TABLE_NAME = "photos"
+    }
+}
+
+data class Photo(
     val id: Int,
     val albumId: Int,
     val title: String,
     val photoUrl: String
 )
 
-fun Photo.toPhotoEntity() = PhotoEntity(this.id, this.albumId, this.title, this.photoUrl, this.thumbnailUrl)
+fun PhotoRemote.toPhotoEntity() = PhotoEntity(this.id, this.albumId, this.title, this.photoUrl, this.thumbnailUrl)
 
-fun PhotoEntity.toPhotoViewable() = PhotoViewable(this.id, this.albumId, this.title, this.photoUrl)
+fun PhotoEntity.toPhotoViewable() = Photo(this.id, this.albumId, this.title, this.photoUrl)
 

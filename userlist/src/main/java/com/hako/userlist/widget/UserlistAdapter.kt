@@ -5,20 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hako.base.extensions.autoNotify
-import com.hako.userlist.model.UserViewable
-import com.hako.friendlist_userlist.R
+import com.hako.userlist.model.User
+import com.hako.userlist.R
 import kotlinx.android.synthetic.main.item_user_card.view.*
 import kotlin.properties.Delegates
 
 class UserlistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var items by Delegates.observable(emptyList<UserViewable>()) { _, oldList, newList ->
+    private var items by Delegates.observable(emptyList<User>()) { _, oldList, newList ->
         autoNotify(oldList, newList) { old, new -> old.id == new.id }
         notifyDataSetChanged()
     }
 
-    var onItemClick: (UserViewable) -> Unit = { }
-    var onFavoriteClick: (UserViewable) -> Unit = { }
+    var onItemClick: (User) -> Unit = { }
+    var onFavoriteClick: (User) -> Unit = { }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         UserViewHolder(
@@ -31,7 +31,7 @@ class UserlistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun getItem(position: Int) = items[position]
 
-    fun addAll(list: List<UserViewable>) {
+    fun addAll(list: List<User>) {
         items = list
     }
 
@@ -46,12 +46,12 @@ class UserlistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 class UserViewHolder(
     private val view: View,
-    private val onItemClick: (UserViewable) -> Unit,
-    private val onFavoriteClick: (UserViewable) -> Unit
+    private val onItemClick: (User) -> Unit,
+    private val onFavoriteClick: (User) -> Unit
 ) :
     RecyclerView.ViewHolder(view) {
 
-    fun bind(user: UserViewable) = with(view) {
+    fun bind(user: User) = with(view) {
         item_user_card_real_name.text = user.realName
         item_user_card_user_name.text = user.userName
         if (user.isFavorite) {

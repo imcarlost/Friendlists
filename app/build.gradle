@@ -16,7 +16,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "DB_NAME", '"friendlists.db"'
         buildConfigField "String", "BASE_ENDPOINT", '"https://jsonplaceholder.typicode.com/"'
     }
 
@@ -57,6 +56,4 @@ dependencies {
     implementation project(":userlist")
     implementation project(":albumlist")
     implementation project(":photolist")
-    testImplementation project(':testing')
-    androidTestImplementation project(':testing')
 }

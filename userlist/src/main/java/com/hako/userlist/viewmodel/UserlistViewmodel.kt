@@ -8,13 +8,13 @@ import com.hako.base.domain.network.RequestStatus.*
 import com.hako.userlist.domain.usecase.GetFavoriteUsers
 import com.hako.userlist.domain.usecase.GetUsers
 import com.hako.userlist.domain.usecase.SetFavoriteStatus
-import com.hako.userlist.model.UserViewable
+import com.hako.userlist.model.User
 import org.koin.core.KoinComponent
 import org.koin.core.get
 
 class UserlistViewmodel : ViewModel(), KoinComponent {
 
-    val userList = MutableLiveData<Either<Throwable, List<UserViewable>>>()
+    val userList = MutableLiveData<Either<Throwable, List<User>>>()
     val favoriteError = MutableLiveData<Int>()
     val emptyMessage = MutableLiveData<String>()
     val requestStatus = MutableLiveData<RequestStatus>()

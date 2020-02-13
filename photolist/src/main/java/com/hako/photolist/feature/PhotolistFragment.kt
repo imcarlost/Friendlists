@@ -11,7 +11,7 @@ import com.hako.base.extensions.gone
 import com.hako.base.extensions.observeNonNull
 import com.hako.base.extensions.visible
 import com.hako.photolist.R
-import com.hako.photolist.model.PhotoViewable
+import com.hako.photolist.model.Photo
 import com.hako.photolist.viewmodel.PhotolistViewmodel
 import com.hako.photolist.widget.PhotolistAdapter
 import kotlinx.android.synthetic.main.fragment_photolist.*
@@ -68,7 +68,7 @@ class PhotolistFragment : Fragment() {
         Timber.e(throwable)
     }
 
-    private fun handleFetchSuccess(photos: List<PhotoViewable>) {
+    private fun handleFetchSuccess(photos: List<Photo>) {
         listAdapter.addAll(photos)
     }
 

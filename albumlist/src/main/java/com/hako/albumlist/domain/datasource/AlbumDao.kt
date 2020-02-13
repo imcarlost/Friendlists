@@ -1,10 +1,10 @@
-package com.hako.base.domain.database.dao
+package com.hako.albumlist.domain.datasource
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.hako.base.domain.database.entities.AlbumEntity
+import com.hako.albumlist.model.AlbumEntity
 
 @Dao
 interface AlbumDao {

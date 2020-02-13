@@ -8,13 +8,13 @@ import com.hako.base.domain.network.RequestStatus.Loading
 import com.hako.base.domain.network.RequestStatus.Errored
 import com.hako.base.domain.Either
 import com.hako.photolist.domain.usecase.GetPhoto
-import com.hako.photolist.model.PhotoViewable
+import com.hako.photolist.model.Photo
 import org.koin.core.KoinComponent
 import org.koin.core.get
 
 class PhotolistViewmodel : ViewModel(), KoinComponent {
 
-    val data = MutableLiveData<Either<Throwable, List<PhotoViewable>>>()
+    val data = MutableLiveData<Either<Throwable, List<Photo>>>()
     val requestStatus = MutableLiveData<RequestStatus>()
 
     private val getPhoto: GetPhoto = get()

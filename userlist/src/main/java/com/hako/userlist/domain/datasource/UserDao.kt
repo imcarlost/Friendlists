@@ -1,10 +1,10 @@
-package com.hako.base.domain.database.dao
+package com.hako.userlist.domain.datasource
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.hako.base.domain.database.entities.UserEntity
+import com.hako.userlist.model.UserEntity
 
 @Dao
 interface UserDao {

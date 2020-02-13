@@ -1,6 +1,12 @@
 apply plugin: 'com.android.library'
 apply from: '../core.gradle'
 
+android {
+    defaultConfig {
+        buildConfigField "String", "DB_NAME", '"userlist.db"'
+    }
+}
+
 dependencies {
     implementation project(':base')
     testImplementation project(':testing')
