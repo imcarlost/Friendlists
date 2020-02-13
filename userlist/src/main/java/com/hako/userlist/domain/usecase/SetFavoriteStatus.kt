@@ -1,6 +1,6 @@
 package com.hako.userlist.domain.usecase
 
-import com.hako.base.domain.database.dao.UserDao
+import com.hako.userlist.domain.datasource.UserDao
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 

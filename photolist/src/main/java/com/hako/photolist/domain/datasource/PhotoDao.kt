@@ -1,10 +1,10 @@
-package com.hako.base.domain.database.dao
+package com.hako.photolist.domain.datasource
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.hako.base.domain.database.entities.PhotoEntity
+import com.hako.photolist.model.PhotoEntity
 
 @Dao
 interface PhotoDao {

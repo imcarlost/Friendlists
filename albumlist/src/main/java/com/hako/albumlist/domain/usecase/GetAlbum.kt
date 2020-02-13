@@ -1,22 +1,18 @@
 package com.hako.albumlist.domain.usecase
 
+import com.hako.albumlist.domain.datasource.AlbumDao
 import com.hako.albumlist.domain.datasource.AlbumlistRemoteApi
-import com.hako.albumlist.model.AlbumViewable
+import com.hako.albumlist.model.Album
 import com.hako.albumlist.model.toAlbumEntity
 import com.hako.albumlist.model.toAlbumViewable
-import com.hako.base.domain.database.dao.AlbumDao
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import org.koin.core.KoinComponent
-import org.koin.core.get
 
-class GetAlbum(private val dao: AlbumDao) : KoinComponent {
-
-    private val api: AlbumlistRemoteApi = get()
+class GetAlbum(private val dao: AlbumDao, private val api: AlbumlistRemoteApi) {
 
     fun execute(
         userId: Int,
-        onSuccess: (List<AlbumViewable>) -> Unit,
+        onSuccess: (List<Album>) -> Unit,
         onError: (Throwable) -> Unit,
         onLoading: () -> Unit
     ) {

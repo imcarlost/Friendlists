@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hako.albumlist.R
-import com.hako.albumlist.model.AlbumViewable
+import com.hako.albumlist.model.Album
 import com.hako.albumlist.navigation.AlbumlistNavigation
 import com.hako.albumlist.viewmodel.AlbumlistViewmodel
 import com.hako.albumlist.widget.AlbumlistAdapter
@@ -72,7 +72,7 @@ class AlbumlistFragment : Fragment() {
         Timber.e(throwable)
     }
 
-    private fun handleFetchSuccess(users: List<AlbumViewable>) {
+    private fun handleFetchSuccess(users: List<Album>) {
         listAdapter.addAll(users)
     }
 

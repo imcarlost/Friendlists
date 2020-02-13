@@ -2,14 +2,14 @@ package com.hako.userlist.feature
 
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.platform.app.InstrumentationRegistry
-import com.hako.base.domain.database.dao.UserDao
-import com.hako.base.domain.database.entities.UserEntity
 import com.hako.testing.isTextDisplayed
+import com.hako.userlist.domain.datasource.UserDao
 import com.hako.userlist.domain.datasource.UserlistRemoteApi
 import com.hako.userlist.domain.usecase.GetFavoriteUsers
 import com.hako.userlist.domain.usecase.GetUsers
 import com.hako.userlist.domain.usecase.SetFavoriteStatus
-import com.hako.userlist.model.User
+import com.hako.userlist.model.UserEntity
+import com.hako.userlist.model.UserRemote
 import com.hako.userlist.model.toUserEntity
 import com.hako.userlist.viewmodel.UserlistViewmodel
 import org.junit.After
@@ -28,7 +28,7 @@ class UserlistFragmentTest {
         startKoin {
             InstrumentationRegistry.getInstrumentation().targetContext
             modules(module {
-                factory { GetUsers(get()) }
+                factory { GetUsers(get(), get()) }
                 factory { GetFavoriteUsers(get()) }
                 factory { SetFavoriteStatus(get()) }
                 viewModel { UserlistViewmodel() }
@@ -92,7 +92,7 @@ class UserlistRobot {
     }
 
     private fun loadTwoBasicUsers() = listOf(
-        User(
+        UserRemote(
             1,
             "Marian Arriaga",
             "mariancita",
@@ -100,7 +100,7 @@ class UserlistRobot {
             "+56873912",
             "www.test.com"
         ),
-        User(
+        UserRemote(
             2,
             "Carlos Martinez",
             "carlitos",

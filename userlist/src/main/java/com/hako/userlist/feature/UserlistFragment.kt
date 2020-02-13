@@ -12,10 +12,10 @@ import com.hako.base.extensions.observeNonNull
 import com.hako.base.extensions.visible
 import com.hako.base.navigation.NavigationRouter
 import com.hako.base.navigation.ShowFabButton
-import com.hako.userlist.model.UserViewable
+import com.hako.userlist.model.User
 import com.hako.userlist.viewmodel.UserlistViewmodel
 import com.hako.userlist.widget.UserlistAdapter
-import com.hako.friendlist_userlist.R
+import com.hako.userlist.R
 import com.hako.userlist.navigation.UserlistNavigation
 import kotlinx.android.synthetic.main.fragment_userlist.*
 import org.koin.android.ext.android.inject
@@ -88,7 +88,7 @@ open class UserlistFragment : Fragment(), ShowFabButton {
         Timber.e(throwable)
     }
 
-    private fun handleFetchSuccess(users: List<UserViewable>) {
+    private fun handleFetchSuccess(users: List<User>) {
         listAdapter.addAll(users)
     }
 

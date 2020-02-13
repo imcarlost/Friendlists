@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hako.base.extensions.autoNotify
 import com.hako.photolist.R
-import com.hako.photolist.model.PhotoViewable
+import com.hako.photolist.model.Photo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_photo_card.view.*
 import org.koin.core.KoinComponent
@@ -15,7 +15,7 @@ import kotlin.properties.Delegates
 
 class PhotolistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var items by Delegates.observable(emptyList<PhotoViewable>()) { _, oldList, newList ->
+    private var items by Delegates.observable(emptyList<Photo>()) { _, oldList, newList ->
         autoNotify(oldList, newList) { old, new -> old.id == new.id }
         notifyDataSetChanged()
     }
@@ -29,7 +29,7 @@ class PhotolistAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun getItem(position: Int) = items[position]
 
-    fun addAll(list: List<PhotoViewable>) {
+    fun addAll(list: List<Photo>) {
         items = list
     }
 
@@ -47,7 +47,7 @@ class PhotoViewHolder(private val view: View) :
 
     private val picasso: Picasso by inject()
 
-    fun bind(photo: PhotoViewable) = with(view) {
+    fun bind(photo: Photo) = with(view) {
         picasso.load(photo.photoUrl)
             .placeholder(R.drawable.img_photo_placeholder)
             .fit()

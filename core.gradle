@@ -31,3 +31,7 @@ android {
         abortOnError false
     }
 }
+
+dependencies {
+    kapt deps.room.compiler
+}

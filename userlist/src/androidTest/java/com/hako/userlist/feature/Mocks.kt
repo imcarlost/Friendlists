@@ -1,9 +1,9 @@
 package com.hako.userlist.feature
 
-import com.hako.base.domain.database.dao.UserDao
-import com.hako.base.domain.database.entities.UserEntity
+import com.hako.userlist.domain.datasource.UserDao
 import com.hako.userlist.domain.datasource.UserlistRemoteApi
-import com.hako.userlist.model.User
+import com.hako.userlist.model.UserEntity
+import com.hako.userlist.model.UserRemote
 import io.reactivex.Single
 
 class MockUserDao(private val userList: List<UserEntity>) : UserDao {
@@ -22,8 +22,8 @@ class MockUserDao(private val userList: List<UserEntity>) : UserDao {
     override fun nukeDatabase() {}
 }
 
-class MockUserApi(private val userList: List<User>) : UserlistRemoteApi {
+class MockUserApi(private val userRemoteList: List<UserRemote>) : UserlistRemoteApi {
     override fun getUsers() = Single.fromCallable { getAllUsers() }
 
-    private fun getAllUsers() = userList
+    private fun getAllUsers() = userRemoteList
 }
