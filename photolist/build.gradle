@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply from: '../core.gradle'
 
 android {
     defaultConfig {
@@ -10,3 +9,5 @@ android {
 dependencies {
     implementation project(':base')
 }
+
+apply from: '../core.gradle'
