@@ -1,16 +1,15 @@
-apply from: 'versions.gradle'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion build_versions.target_sdk
-    buildToolsVersion build_versions.build_tools
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
+        minSdkVersion 21
+        targetSdkVersion 30
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,29 +28,29 @@ android {
 }
 
 dependencies {
-    kapt deps.room.compiler
-    api deps.kotlin.std_lib
-    api deps.androidx.appcompat
-    api deps.androidx.core_ktx
-    api deps.androidx.constraint_layout
-    api deps.androidx.lifecycle_ext
-    api deps.androidx.lifecycle_viewmodel
-    api deps.androidx.recycler_view
-    api deps.androidx.navigation_fragment
-    api deps.androidx.navigation_ui
-    api deps.retrofit.runtime
-    api deps.retrofit.gson
-    api deps.retrofit.rx
-    api deps.room.runtime
-    api deps.koin.core
-    api deps.koin.scope
-    api deps.koin.viewmodel
-    api deps.rx.core
-    api deps.rx.android
-    api deps.okhttp_logging_interceptor
-    api deps.timber
-    api deps.lottie
-    api deps.picasso
+    kapt libs.room.compiler
+    api libs.kotlin.stdlib
+    api libs.androidx.appcompat
+    api libs.androidx.core.ktx
+    api libs.androidx.constraintlayout
+    api libs.androidx.lifecycle.extensions
+    api libs.androidx.lifecycle.viewmodel
+    api libs.androidx.recyclerview
+    api libs.androidx.navigation.fragment
+    api libs.androidx.navigation.ui
+    api libs.retrofit.runtime
+    api libs.retrofit.gson
+    api libs.retrofit.rxjava
+    api libs.room.runtime
+    api libs.koin.core
+    api libs.koin.scope
+    api libs.koin.viewmodel
+    api libs.rxjava.core
+    api libs.rxjava.android
+    api libs.okhttp.logging.interceptor
+    api libs.timber
+    api libs.lottie
+    api libs.picasso
     testImplementation project(':testing')
     androidTestImplementation project(':testing')
 }

@@ -1,14 +1,12 @@
 buildscript {
-    apply from: 'versions.gradle'
-
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath deps.project.kotlin
-        classpath deps.project.gradle
+        classpath libs.kotlin.stdlib
+        classpath libs.gradle.plugin
     }
 }
 
@@ -16,8 +14,19 @@ plugins {
     id "io.gitlab.arturbosch.detekt" version "1.5.0"
 }
 
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            from(files("gradle/libs.versions.toml"))
+        }
+    }
+}
+
 allprojects {
-    addRepos(repositories)
+    repositories {
+        google()
+        jcenter()
+    }
 }
 
 detekt {

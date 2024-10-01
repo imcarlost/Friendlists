@@ -1,0 +1,38 @@
+[versions]
+kotlin = "1.5.21"
+gradle = "7.0.2"
+room = "2.3.0"
+retrofit = "2.9.0"
+koin = "3.1.2"
+rxjava = "3.0.13"
+okhttp = "4.9.1"
+timber = "4.7.1"
+lottie = "3.7.0"
+picasso = "2.71828"
+androidx = "1.3.1"
+
+[libraries]
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+retrofit-runtime = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+retrofit-rxjava = { group = "com.squareup.retrofit2", name = "adapter-rxjava3", version.ref = "retrofit" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-scope = { group = "io.insert-koin", name = "koin-androidx-scope", version.ref = "koin" }
+koin-viewmodel = { group = "io.insert-koin", name = "koin-androidx-viewmodel", version.ref = "koin" }
+rxjava-core = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
+rxjava-android = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxjava" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx" }
+androidx-constraint-layout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx" }
+androidx-lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "androidx" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidx" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidx" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidx" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidx" }
