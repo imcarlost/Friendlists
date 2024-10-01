@@ -1,14 +1,12 @@
 buildscript {
-    apply from: 'versions.gradle'
-
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath deps.project.kotlin
-        classpath deps.project.gradle
+        classpath libs.plugins.kotlin
+        classpath libs.plugins.gradle
     }
 }
 
@@ -17,7 +15,11 @@ plugins {
 }
 
 allprojects {
-    addRepos(repositories)
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
 }
 
 detekt {

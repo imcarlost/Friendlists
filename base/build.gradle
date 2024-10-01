@@ -1,16 +1,15 @@
-apply from: 'versions.gradle'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion build_versions.target_sdk
-    buildToolsVersion build_versions.build_tools
+    compileSdkVersion libs.versions.target_sdk.get().toInteger()
+    buildToolsVersion libs.versions.build_tools.get()
 
     defaultConfig {
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
+        minSdkVersion libs.versions.min_sdk.get().toInteger()
+        targetSdkVersion libs.versions.target_sdk.get().toInteger()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,29 +28,29 @@ android {
 }
 
 dependencies {
-    kapt deps.room.compiler
-    api deps.kotlin.std_lib
-    api deps.androidx.appcompat
-    api deps.androidx.core_ktx
-    api deps.androidx.constraint_layout
-    api deps.androidx.lifecycle_ext
-    api deps.androidx.lifecycle_viewmodel
-    api deps.androidx.recycler_view
-    api deps.androidx.navigation_fragment
-    api deps.androidx.navigation_ui
-    api deps.retrofit.runtime
-    api deps.retrofit.gson
-    api deps.retrofit.rx
-    api deps.room.runtime
-    api deps.koin.core
-    api deps.koin.scope
-    api deps.koin.viewmodel
-    api deps.rx.core
-    api deps.rx.android
-    api deps.okhttp_logging_interceptor
-    api deps.timber
-    api deps.lottie
-    api deps.picasso
+    kapt libs.room.compiler
+    api libs.kotlin.std_lib
+    api libs.androidx.appcompat
+    api libs.androidx.core_ktx
+    api libs.androidx.constraint_layout
+    api libs.androidx.lifecycle_ext
+    api libs.androidx.lifecycle_viewmodel
+    api libs.androidx.recycler_view
+    api libs.androidx.navigation_fragment
+    api libs.androidx.navigation_ui
+    api libs.retrofit.runtime
+    api libs.retrofit.gson
+    api libs.retrofit.rx
+    api libs.room.runtime
+    api libs.koin.core
+    api libs.koin.scope
+    api libs.koin.viewmodel
+    api libs.rx.core
+    api libs.rx.android
+    api libs.okhttp_logging_interceptor
+    api libs.timber
+    api libs.lottie
+    api libs.picasso
     testImplementation project(':testing')
     androidTestImplementation project(':testing')
 }
